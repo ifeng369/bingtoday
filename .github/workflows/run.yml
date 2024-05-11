@@ -5,9 +5,8 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+    tags:
+      - v*
 
 jobs:
   build:
@@ -21,4 +20,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - run: node -v
+    - name: Commit files
+      run: |
+        git config --local user.email "bot@163.com"
+        git config --local user.name "bot"
+        git commit -a -m "Add changes"
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: ${{ github.ref }}

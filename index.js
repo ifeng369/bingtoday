@@ -4,7 +4,7 @@ import { join } from "path";
 
 
 
-get('https://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1', (res) => {
+get('https://cn.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1', (res) => {
     console.log(`Got response: ${res.statusCode}`);
     var str = ""
     res.on("data", (data) => {

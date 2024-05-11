@@ -22,6 +22,7 @@ jobs:
     - uses: actions/checkout@v4
     - name: Commit files
       run: |
+        node index.js
         git config --local user.email "bot@163.com"
         git config --local user.name "bot"
         git commit -a -m "Add changes"

@@ -4,12 +4,12 @@
 name: GetData
 
 on:
- schedule:
-  # 定时任务，在每天的9点获取壁纸
-    - cron: '20 1 * * *'
-  # push:
-  #   tags:
-  #     - v*
+#  schedule:
+#   # 定时任务，在每天的9点获取壁纸
+#     - cron: '20 1 * * *'
+  push:
+    tags:
+      - v*
 jobs:
   GetData:
 

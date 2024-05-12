@@ -11,7 +11,7 @@ on:
     tags:
       - v*
 jobs:
-  build:
+  GetData:
 
     runs-on: ubuntu-latest
 

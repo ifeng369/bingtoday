@@ -24,7 +24,7 @@ jobs:
     - uses: actions/checkout@v4
     - name: Commit files
       run: |
-        ls
+        cat data.json
         node index.js
         git config --local user.email "bot@163.com"
         git config --local user.name "bot"

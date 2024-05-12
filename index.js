@@ -13,7 +13,7 @@ get('https://cn.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1', (res) => {
     res.on("end", () => {
         const json = JSON.parse(str).images[0];
         const saveStr = JSON.stringify({startdate:json.startdate,fullstartdate:json.fullstartdate,enddate:json.enddate,url:json.url,title:json.title,copyright:json.copyright})
-        appendFile('data.josn', saveStr+"\r\n",'utf8', function (err) {
+        appendFile('data.json', saveStr+"\r\n",'utf8', function (err) {
             console.log(err)
         })
     })

@@ -3,7 +3,7 @@ import { appendFile } from "fs";
 import { join } from "path";
 
 
-const option = {headers:{'Accept-Language':'zh-CN'}}
+const option = {headers:{'X-Forwarded-For':'223.5.5.5'}}
 get('https://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1',option, (res) => {
     console.log(`Got response: ${res.statusCode}`);
     var str = ""

@@ -25,7 +25,7 @@ jobs:
     - name: GetData
       id: date
       run: |
-        echo "::set-output name=date::$(date +'%Y-%m-%d')"
+        echo "{date}=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
         node index.js
     - name: Commit files
       run: |

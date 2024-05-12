@@ -3,8 +3,8 @@ import { appendFile } from "fs";
 import { join } from "path";
 
 
-
-get('https://cn.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1', (res) => {
+const option = {headers:{'Accept-Language':'zh-CN'}}
+get('https://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1',option, (res) => {
     console.log(`Got response: ${res.statusCode}`);
     var str = ""
     res.on("data", (data) => {

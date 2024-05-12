@@ -6,7 +6,7 @@ name: GetData
 on:
  schedule:
   # 定时任务，在每天的9点获取壁纸
-    - cron: '00 1 * * *'
+    - cron: '07 1 * * *'
   # push:
   #   tags:
   #     - v*

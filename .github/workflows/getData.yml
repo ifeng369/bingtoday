@@ -22,12 +22,16 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+    - name: GetData
+      id: date
+      run: |
+        echo "::set-output name=date::$(date +'%Y-%m-%d')"
+        node index.js
     - name: Commit files
       run: |
-        node index.js
         git config --local user.email "bot@163.com"
         git config --local user.name "bot"
-        git commit -a -m "Add changes"
+        git commit -a -m "${{ steps.date.outputs.date }} 日壁纸"
     - name: Push changes
       uses: ad-m/github-push-action@master
       with:

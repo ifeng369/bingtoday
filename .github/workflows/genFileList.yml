@@ -28,7 +28,7 @@ jobs:
       run: |
         git config --local user.email "bot@163.com"
         git config --local user.name "bot"
-        git commit -a -m "${{ steps.date.outputs.date }} 日文件列表"
+        git commit -a -m "${{ steps.date.outputs.date }} 文件列表"
     - name: Push changes
       uses: ad-m/github-push-action@master
       with:

@@ -1,0 +1,36 @@
+# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
+
+name: GenFileList
+
+on:
+ push:
+  paths:
+    - 'wallpaper/**'
+jobs:
+  GenFileList:
+
+    runs-on: ubuntu-latest
+
+    # strategy:
+    #   matrix:
+    #     node-version: [14.x, 16.x, 18.x]
+    #     # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: GetDate
+      id: date
+      run: |
+        echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+        ls > filelist.txt
+    - name: Commit files
+      run: |
+        git config --local user.email "bot@163.com"
+        git config --local user.name "bot"
+        git commit -a -m "${{ steps.date.outputs.date }} 日文件列表"
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        force: true

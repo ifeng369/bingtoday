@@ -23,7 +23,7 @@ jobs:
       id: date
       run: |
         echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
-        ls > filelist.txt
+        ls wallpaper > filelist.txt
     - name: Commit files
       run: |
         git config --local user.email "bot@163.com"

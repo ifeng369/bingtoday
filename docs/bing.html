@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>必应壁纸</title>
+    <style>
+      .imginfo {
+        width: calc(94vw / 4);
+        padding:10px;
+      }
+      .all {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .imgdes {
+        text-align: center;
+      }
+      .pagebar
+      {
+        text-align: center;
+      }
+      .page {
+        margin: 0 10px;
+      }
+      img {
+        width: auto;
+        height: auto;
+        max-width: 100%;
+        max-height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      let dataList = [];
+      let page = 1;
+      let pageSize = 12;
+      let pageData = [];
+      fetch("https://raw.githubusercontent.com/ifeng369/bingtoday/main/data.json")
+        .then((text) => text.text())
+        .then((text) => {
+          text.split("\r\n").forEach((t) => {
+            try {
+              dataList.push(JSON.parse(t));
+            } catch {
+              console.log(t);
+            }
+          });
+          dataList = dataList.sort((a,b)=>b.enddate-a.enddate)
+          genPage();
+        });
+
+      const genPage = () => {
+        document.querySelector(".all").innerHTML=null;
+        pageData = dataList.slice((page-1)*pageSize, page*pageSize);
+        pageData.forEach((d) => {
+          let el = document.createElement("div");
+          el.className = "imginfo";
+          let a = document.createElement("a");
+          a.href = "https://www.bing.com" + d.url;
+          a.target = "_blank";
+          let img = document.createElement("img");
+          img.src = "https://www.bing.com" + d.url;
+          let des = document.createElement("div");
+          des.className = "imgdes";
+          des.innerText = d.enddate+" "+d.title;
+          a.append(img);
+          el.append(a);
+          el.append(des);
+          document.querySelector(".all").appendChild(el);
+        });
+        document.querySelector(".page").innerText = page;
+      };
+      const next = ()=>{
+        const maxPage = Math.round(dataList.length/pageSize);
+        if(page<maxPage){
+            page++;
+            genPage();
+        }
+      }
+      const prev = ()=>{
+        if(page>1)
+        {
+            page--;
+            genPage();
+        } 
+      }
+      const first = ()=>{
+        if(page==1) return;
+        page = 1;
+        genPage();
+      }
+      const last = ()=>{
+        const maxPage = Math.round(dataList.length/pageSize);
+        if(page==maxPage) return;
+        page = maxPage;
+        genPage();
+      }
+    </script>
+    <div class="all"></div>
+    <div class="pagebar">
+        <button class="prev" onclick="first()">首页</button>
+        <button class="prev" onclick="prev()">上一页</button>
+        <span class="page"></span>
+        <button class="next"  onclick="next()">下一页</button>
+        <button class="next"  onclick="last()">尾页</button>
+        <a href="other.html" style="position: absolute;margin-left: 50px;">其他壁纸</a>
+    </div>
+  </body>
+</html>

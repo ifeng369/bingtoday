@@ -74,7 +74,7 @@
         document.querySelector(".page").innerText = page;
       };
       const next = ()=>{
-        const maxPage = Math.round(dataList.length/pageSize);
+        const maxPage = Math.ceil(dataList.length/pageSize);
         if(page<maxPage){
             page++;
             genPage();
@@ -93,7 +93,7 @@
         genPage();
       }
       const last = ()=>{
-        const maxPage = Math.round(dataList.length/pageSize);
+        const maxPage = Math.ceil(dataList.length/pageSize);
         if(page==maxPage) return;
         page = maxPage;
         genPage();

@@ -5,11 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>必应壁纸</title>
     <style>
-      .imginfo {
-        width: calc(100vw / 4 - 20px);
-        min-width: 400px;
-        padding: 10px 6px;
+      @media (width <= 700px) {
+        .imginfo {
+          width: 100vw;
+          padding: 10px 6px;
+        }
       }
+      @media (700px < width <= 1000px) {
+        .imginfo {
+          width: calc(100vw / 2 - 20px);
+          padding: 10px 6px;
+        }
+      }
+      @media (1000px < width <= 1500px) {
+        .imginfo {
+          width: calc(100vw / 3 - 20px);
+          padding: 10px 6px;
+        }
+      }
+      @media (1500px < width) {
+        .imginfo {
+          width: calc(100vw / 4 - 20px);
+          padding: 10px 6px;
+        }
+      }
+
       .all {
         display: flex;
         flex-wrap: wrap;
@@ -34,10 +54,9 @@
         padding: 5px 0;
         /* color: #ffffff; */
       }
-      .title{
+      .title {
         font-size: 30px;
         text-align: center;
-
       }
       img {
         width: auto;

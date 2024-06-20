@@ -6,22 +6,38 @@
     <title>必应壁纸</title>
     <style>
       .imginfo {
-        width: calc(94vw / 4);
-        padding: 10px;
+        width: calc(100vw / 4 - 20px);
+        min-width: 300px;
+        padding: 10px 6px;
       }
       .all {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
+        align-items: center;
       }
       .imgdes {
         text-align: center;
       }
       .pagebar {
         text-align: center;
+        margin-top: 10px;
       }
       .page {
         margin: 0 10px;
+      }
+      .imgdes {
+        position: relative;
+        background: #f7f7f79e;
+        width: 100%;
+        margin-top: -40px;
+        padding: 5px 0;
+        /* color: #ffffff; */
+      }
+      .title{
+        font-size: 30px;
+        text-align: center;
+
       }
       img {
         width: auto;
@@ -99,6 +115,7 @@
         genPage();
       };
     </script>
+    <div class="title">必应每日壁纸</div>
     <div class="all"></div>
     <div class="pagebar">
       <button class="prev" onclick="first()">首页</button>
@@ -106,9 +123,9 @@
       <span class="page"></span>
       <button class="next" onclick="next()">下一页</button>
       <button class="next" onclick="last()">尾页</button>
-      <a href="other.html" style="position: absolute; margin-left: 50px"
-        >其他壁纸</a
-      >
+      <div style="margin-top: 15px">
+        <a href="other.html">其他壁纸</a>
+      </div>
     </div>
   </body>
 </html>

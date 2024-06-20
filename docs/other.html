@@ -78,7 +78,7 @@
         .then((text) => text.text())
         .then((text) => {
           text.split("\n").forEach((t) => {
-            dataList.push(t);
+            if(t) dataList.push(t);
           });
           genPage();
         });
